@@ -1,54 +1,71 @@
 # Selectors - Proyecto TalentoTech
 https://www.saucedemo.com
 
-## Login Page
-- Input Usuario: id="user-name" (Id del campo Username) - #user-name
-- Input Password: id="password" (Id del campo Password) - #password
+---
 
-- Input submit Login(button): id="login-button" (Id de botón de Login) - #login-button
-- Mensaje de error: div class="error-message-container (Contendor de Mensaje de error) - .error-message-container h3
-                    h3 data-test="error" () - [data-test="error"]
+## Login Page
+
+| Elemento | Tipo | Selector | DOM | Descripción |
+|----------|------|----------|-----|-------------|
+| Input Usuario | ID | `#user-name` | `id="user-name"` | Campo de nombre de usuario |
+| Input Password | ID | `#password` | `id="password"` | Campo de contraseña |
+| Botón Login | ID | `#login-button` | `id="login-button"` | Botón de submit del formulario |
+| Contenedor error | Class | `.error-message-container h3` | `class="error-message-container"` | Contenedor del mensaje de error |
+| Mensaje de error | CSS | `[data-test="error"]` | `data-test="error"` | Texto del mensaje de error |
+
+---
 
 ## Header
 
-- Boton hamburguesa: id="react-burger-menu-btn" (Id del boton hamburguesa arriba izquierda) - #react-burger-menu-btn
-- Boton About: id="about_sidebar_link" (Id del boton de "Acerca de" dentro del menu hamburguesa, lleva a pagina externa) - #about_sidebar_link
-- Boton logout: id="logout_sidebar_link" (Id del boton de logout dentro del menu hamburguesa) - #logout_sidebar_link
-- Boton Reset: id="reset_sidebar_link" (Id del boton de reseteo del estado de la pagina dentro del menú hamburguesa) - #reset_sidebar_link
+| Elemento | Tipo | Selector | DOM | Descripción |
+|----------|------|----------|-----|-------------|
+| Botón hamburguesa | ID | `#react-burger-menu-btn` | `id="react-burger-menu-btn"` | Abre el menú lateral |
+| Botón About | ID | `#about_sidebar_link` | `id="about_sidebar_link"` | Lleva a página externa de Sauce Labs |
+| Botón Logout | ID | `#logout_sidebar_link` | `id="logout_sidebar_link"` | Cierra la sesión |
+| Botón Reset | ID | `#reset_sidebar_link` | `id="reset_sidebar_link"` | Resetea el estado de la página |
+| Logo / Título | Class | `.app_logo` | `class="app_logo"` | Texto "Swag Labs" en el header |
+| Carrito | Class | `.shopping_cart_link` | `class="shopping_cart_link"` | Link al carrito de compras |
+| Badge carrito | Class | `.shopping_cart_badge` | `class="shopping_cart_badge"` | Indicador de cantidad de productos en el carrito |
+| Filtro | Class | `.product_sort_container` | `class="product_sort_container"` | Contenedor del filtro de ordenamiento |
 
-- Header de la pagina: div class="app_logo" (Header/Titulo/Logo de Swag Labs)
- 
-- Carrito: class="shopping_cart_link" (Link a Carrito) - .shopping_cart_link
-- Cantidad: class="shopping_cart_badge" (Indicador de cantidad de productos en el carrito) - .shopping_cart_badge
-
-- Filtro: class="product_sort_container" (Clase del contenedor de filtro) - .product_sort_container
+---
 
 ## Inventory Page
 
-- Lista de productos: class="inventory_list" (Clase del contenedor de tarjetas de productos) - .inventory_list
-- Nombre: class="inventory_item_name " (Clase de Nombre de producto en tarjeta) - .inventory_item_name
-- Descripción: class="inventory_item_desc" (Clase de Descripción de producto en tarjeta) - .inventory_item_desc
-- Precio: class="inventory_item_price" (Clase de Precio de producto en tarjeta) - .inventory_item_price
-- Botón Agregar a Cart: id="add-to-cart-sauce-labs-backpack" (Id de botón de añadir producto al carrito) - #add-to-cart-sauce-labs-backpack
-- Imagen: class="inventory_item_img" (Clase de Imagen de producto en tarjeta) - .inventory_item_img
+| Elemento | Tipo | Selector | DOM | Descripción |
+|----------|------|----------|-----|-------------|
+| Lista de productos | Class | `.inventory_list` | `class="inventory_list"` | Contenedor de todas las tarjetas de productos |
+| Tarjeta de producto | Class | `.inventory_item` | `class="inventory_item"` | Tarjeta individual de producto |
+| Nombre | Class | `.inventory_item_name` | `class="inventory_item_name"` | Nombre del producto en la tarjeta |
+| Descripción | Class | `.inventory_item_desc` | `class="inventory_item_desc"` | Descripción del producto en la tarjeta |
+| Precio | Class | `.inventory_item_price` | `class="inventory_item_price"` | Precio del producto en la tarjeta |
+| Imagen | Class | `.inventory_item_img` | `class="inventory_item_img"` | Imagen del producto en la tarjeta |
+| Botón Agregar | ID | `#add-to-cart-sauce-labs-backpack` | `id="add-to-cart-sauce-labs-backpack"` | Botón de añadir producto al carrito |
+
+---
 
 ## Item Detail
 
-- Nombre: class="inventory_item_name " (Clase de Nombre de producto en tarjeta) - .inventory_item_name
-- Descripción: class="inventory_item_desc" (Clase de Descripción de producto en tarjeta) - .inventory_item_desc
-- Precio: class="inventory_item_price" (Clase de Precio de producto en tarjeta) - .inventory_item_price
-- Botón Agregar a Cart: id="add-to-cart-sauce-labs-backpack" (Id de botón de añadir producto al carrito) - #add-to-cart-sauce-labs-backpack
-- Imagen: class="inventory_item_img" (Clase de Imagen de producto en tarjeta) - .inventory_item_img
+| Elemento | Tipo | Selector | DOM | Descripción |
+|----------|------|----------|-----|-------------|
+| Nombre | Class | `.inventory_item_name` | `class="inventory_item_name"` | Nombre del producto |
+| Descripción | Class | `.inventory_item_desc` | `class="inventory_item_desc"` | Descripción del producto |
+| Precio | Class | `.inventory_item_price` | `class="inventory_item_price"` | Precio del producto |
+| Imagen | Class | `.inventory_item_img` | `class="inventory_item_img"` | Imagen del producto |
+| Botón Agregar | ID | `#add-to-cart-sauce-labs-backpack` | `id="add-to-cart-sauce-labs-backpack"` | Botón de añadir producto al carrito |
+
+---
 
 ## Cart
 
-- : class="title" (Clase de Titulo de carrito "Your Cart") - 
-- : class="cart_quantity" (Cantidad del mismo tipo de producto en el carrito) - 
-- Nombre: class="inventory_item_name " (Clase de Nombre de producto en tarjeta) - .inventory_item_name
-- Descripción: class="inventory_item_desc" (Clase de Descripción de producto en tarjeta) - .inventory_item_desc
-- Precio: class="inventory_item_price" (Clase de Precio de producto en tarjeta) - .inventory_item_price
-- Botón Agregar a Cart: id="add-to-cart-sauce-labs-backpack" (Id de botón de añadir producto al carrito) - #add-to-cart-sauce-labs-backpack
-- Imagen: class="inventory_item_img" (Clase de Imagen de producto en tarjeta) - .inventory_item_img
-- : id="remove-sauce-labs-backpack" (Id de botón para remover item de carrito) - 
-- : id="continue-shopping" (Id de botón para volver al inventario) - 
-- : id="checkout" (Id de botón de Checkout) - 
+| Elemento | Tipo | Selector | DOM | Descripción |
+|----------|------|----------|-----|-------------|
+| Título | Class | `.title` | `class="title"` | Título de la página "Your Cart" |
+| Cantidad | Class | `.cart_quantity` | `class="cart_quantity"` | Cantidad del mismo producto en el carrito |
+| Nombre | Class | `.inventory_item_name` | `class="inventory_item_name"` | Nombre del producto en el carrito |
+| Descripción | Class | `.inventory_item_desc` | `class="inventory_item_desc"` | Descripción del producto en el carrito |
+| Precio | Class | `.inventory_item_price` | `class="inventory_item_price"` | Precio del producto en el carrito |
+| Imagen | Class | `.inventory_item_img` | `class="inventory_item_img"` | Imagen del producto en el carrito |
+| Botón Remove | ID | `#remove-sauce-labs-backpack` | `id="remove-sauce-labs-backpack"` | Botón para eliminar producto del carrito |
+| Botón Continue Shopping | ID | `#continue-shopping` | `id="continue-shopping"` | Vuelve a la página de inventario |
+| Botón Checkout | ID | `#checkout` | `id="checkout"` | Avanza al proceso de pago |
