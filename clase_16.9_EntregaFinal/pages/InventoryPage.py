@@ -87,6 +87,14 @@ class InventoryPage:
         producto = productos [numProd] #de la lista de productos guarda el producto segun el indice recibido
         producto.find_element(*self.add_to_cart).click()
 
+    def agregar_producto_por_nombre(self, nombre_producto_json):
+        productos = self.driver.find_elements(*self.item_details)
+        for producto in productos:
+            nombre = producto.find_element(*self.item_name).text
+            if nombre == nombre_producto_json:
+                producto.find_element(*self.add_to_cart).click()
+                break
+
     # Métodos para carrito
 
     def obtener_carrito(self):

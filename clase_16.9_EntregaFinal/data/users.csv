@@ -1,4 +1,4 @@
-usuario,contrasena,valido
-standard_user,secret_sauce,true
-usuario_incorrecto,secret_sauce,false
-standard_user,contrasena_incorrecta,false
+descripcion,usuario,contrasena,valido
+login_valido,standard_user,secret_sauce,true
+usuario_invalido,usuario_incorrecto,secret_sauce,false
+contrasena_invalida,standard_user,contrasena_incorrecta,false

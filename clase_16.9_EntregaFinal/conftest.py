@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver #importa el modulo webdriver que controla el navegador para hacer las pruebas
 from pages.LoginPage import LoginPage
+from utils.data_reader import read_users_csv
 
 @pytest.fixture #el .fixture es un decorador o etiqueta quie marca esta función como reutilizable para que varios test la pueden usar como parametro
 def driver(): 
@@ -18,5 +19,10 @@ def driver():
 @pytest.fixture #Este fixture recibe el driver y llama a la funcion de login de LoginPage.py, devuelve el driver ya logueado
 def driver_logged(driver):
     login_page = LoginPage(driver)
-    login_page.login_completo("standard_user","secret_sauce")
+    users = read_users_csv()
+    for user in users:  #For para buscar un registro cuyo valor para "valido" sea "T"rue"
+        if user["valido"] == "true":
+            break
+    login_page.login_completo(user["usuario"], user["contrasena"])
     return(driver)
+

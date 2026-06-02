@@ -1,5 +1,6 @@
 from pages.InventoryPage import InventoryPage
 from pages.CartPage import CartPage
+from utils.data_reader import read_products_json
 
 def test_CA01_cart_badge(driver_logged):    #Caso para verificar que se muestre el numero de productos cuando se agrega al menos 1 al carrito
     inventory_page = InventoryPage(driver_logged)
@@ -38,3 +39,30 @@ def test_CA04_check_item_in_cart(driver_logged):    #Caso para validar que las c
     assert nombreInv == nombreCar, "El nombre del producto en el catálogo difiere al del carrito"   #Compara los nombres del producto fuera en el invetorio contra los del carrito
     assert precioInv == precioCar, "El precio del producto en el catálogo difiere al del carrito"
     assert descrpInv == descrpCar, "La descripción del producto en el catálogo difiere a la del carrito"
+
+def test_CA05_check_item_name(driver_logged):
+    inventory_page = InventoryPage(driver_logged)
+    cart_page = CartPage(driver_logged)
+    listaProducJson = read_products_json()
+    for producto in listaProducJson:
+        inventory_page.agregar_producto_por_nombre(producto["nombre"])
+
+    inventory_page.ir_al_carrito()
+    productosCarrito = cart_page.obtener_productos()
+
+    for productoJson in listaProducJson:
+        encontrado = False
+        for productoCarrito in productosCarrito:
+            if (productoCarrito.find_element(*cart_page.cart_item_name).text == productoJson["nombre"]):
+                encontrado = True
+                break
+        assert encontrado, f"Producto incorrecto o faltante: {productoJson["nombre"]}"
+
+'''
+    nombreInv = str(inventory_page.obtener_nombre_producto(0)) #Guarda el nombre del producto en el inventario.
+    inventory_page.agregar_al_carrito(0)
+    inventory_page.ir_al_carrito()
+    nombreCar = str(cart_page.obtener_nombre_producto(0))  #Guarda el nombre del producto en el carrito.
+    assert nombreInv == nombreCar, "El nombre del producto en el catálogo difiere al del carrito"   
+    assert nombreJsn == nombreInv, "El nombre del producto en el catálogo difiere al de la base"
+    '''    

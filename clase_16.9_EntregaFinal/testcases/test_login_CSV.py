@@ -7,7 +7,7 @@ from utils.data_reader import read_users_csv
 
 import pytest
 
-@pytest.mark.parametrize("user", read_users_csv())
+@pytest.mark.parametrize("user", read_users_csv(), ids=[elemento["descripcion"] for elemento in read_users_csv()]) #Usa el valor de la columna "descripcion" del archivo CSV como ID del caso en los resultados.
 def test_LO01_login_exitoso(driver, user):
     login_page = LoginPage(driver)
     login_page.login_completo(user["usuario"], user["contrasena"])
