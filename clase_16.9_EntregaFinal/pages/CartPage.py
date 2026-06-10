@@ -1,12 +1,12 @@
 from selenium.webdriver.common.by import By
+from pages.BasePage import BasePage
 
-class CartPage:
+class CartPage(BasePage):
     def __init__(self, driver):
-        
-        self.driver = driver
+        super().__init__(driver)
 
         #Selectores
-        self.app_logo = (By.CLASS_NAME, "app_logo")
+        
         self.your_cart_title = (By.CLASS_NAME, "title")
 
         self.cart_list = (By.CLASS_NAME, "cart_list")

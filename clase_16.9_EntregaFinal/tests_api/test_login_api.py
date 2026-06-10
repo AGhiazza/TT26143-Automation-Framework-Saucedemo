@@ -3,7 +3,7 @@ from utils.api_utils import BASE_URL, HEADERS
 import pytest
 from utils.data_reader import read_json_files
 
-
+@pytest.mark.api
 @pytest.mark.parametrize("user", read_json_files("login_cases.json"), ids=[elemento["descripcion"] for elemento in read_json_files("login_cases.json")])
 def test_APILO01_login(user):
     
