@@ -8,12 +8,12 @@ class BasePage:
         #Selectores
         self.app_logo = (By.CLASS_NAME, "app_logo")
         self.go_to_cart = (By.CLASS_NAME, "shopping_cart_link")
-        self.cart_badge = (By.CLASS_NAME, "shopping_cart_badge")
+        self.cart_badge = (By.CLASS_NAME, "shopping_cart_badge") #Contador de items en el carrito
         self.burguer = (By.ID, "react-burger-menu-btn") 
-        self.allitems_button = (By.ID, "inventory_sidebar_link")
+        self.allitems_button = (By.ID, "inventory_sidebar_link") #Boton "All Items" redirige al inventorio
         self.about = (By.ID, "about_sidebar_link")
         self.logout = (By.ID, "logout_sidebar_link")
-        self.resetapp = (By.ID, "reset_sidebar_link")
+        self.resetapp = (By.ID, "reset_sidebar_link") #Boton que resetea el estado de la app.
         self.close_burguer = (By.ID, "react-burger-cross-btn")
 
     def obtener_titulo(self):

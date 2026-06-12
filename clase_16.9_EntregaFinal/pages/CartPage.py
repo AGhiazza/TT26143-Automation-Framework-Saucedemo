@@ -3,7 +3,7 @@ from pages.BasePage import BasePage
 
 class CartPage(BasePage):
     def __init__(self, driver):
-        super().__init__(driver)
+        super().__init__(driver) #Importa los atributos y métodos de BasePage
 
         #Selectores
         

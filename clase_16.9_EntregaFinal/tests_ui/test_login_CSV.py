@@ -6,11 +6,14 @@ from selenium.webdriver.support import expected_conditions as EC #expected_condi
 from utils.data_reader import read_users_csv
 
 import pytest
+from utils.logger import logger
+
 
 @pytest.mark.ui
 @pytest.mark.parametrize("user", read_users_csv(), ids=[elemento["descripcion"] for elemento in read_users_csv()]) #Usa el valor de la columna "descripcion" del archivo CSV como ID del caso en los resultados.
 def test_LO01_login(driver, user):
     login_page = LoginPage(driver)
+    logger.info(f"Intentando login con usuario: {user['usuario']}")
     login_page.login_completo(user["usuario"], user["contrasena"])
     if user["valido"] == "true":
         WebDriverWait (driver, 5).until( #espera hasta 5 segundos o hasta que se cumpla la condicion definida abajo
@@ -18,28 +21,9 @@ def test_LO01_login(driver, user):
                                             #El sistema espera entonces que aparezca "/inventory.html" en la URL o que pasen 5 segundos antes de avanzar
         )
         assert "/inventory.html" in driver.current_url, "No se visualiza la pagina del inventario" #verifica que la URL actual incluya "/inventory.html". 
+        logger.info("Login exitoso - redirigido a inventario")
     else:
+        logger.info("Login fallido - verificando mensaje de error")
         error = login_page.mensaje_error()
         assert "Epic sadface" in error                                                                                        #Si no, el test falla con el mensaje de error "No se visualiza la pagina del inventario".
 
-
-
-
-'''
-def test_LO01_login_exitoso(driver):
-    login_page = LoginPage(driver) # El objeto login_page almacena la clase LoginPage con el driver
-    login_page.login_completo("standard_user","secret_sauce")
-    WebDriverWait (driver, 5).until( #espera hasta 5 segundos o hasta que se cumpla la condicion definida abajo
-        EC.url_contains("/inventory.html")  #se indica que la condición esperada para la espera explicita es que la URL contenga "/inventory.html"
-                                            #El sistema espera entonces que aparezca "/inventory.html" en la URL o que pasen 5 segundos antes de avanzar
-    )
-    assert "/inventory.html" in driver.current_url, "No se visualiza la pagina del inventario" #verifica que la URL actual incluya "/inventory.html". 
-                                                                                               #Si no, el test falla con el mensaje de error "No se visualiza la pagina del inventario".
-
-def test_LO02_login_fallido_campos_vacios(driver):
-    login_page = LoginPage(driver)
-    login_page.abrir_pagina()
-    login_page.click_login()
-    mensaje_error = login_page.mensaje_error()
-    assert "Username is required" in mensaje_error, "No se visualiza el mensaje de error correcto"
-'''
