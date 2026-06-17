@@ -2,10 +2,6 @@
 
 ## Descripción
 
-
-
-## Propósito del Proyecto
-
 El objetivo de este proyecto es aprender tecnologías y procesos de automatización QA. Para ello se automatiza el sitio web [saucedemo.com](https://www.saucedemo.com), una aplicación demo diseñada especialmente para prácticas de testing.
 
 ## Tecnologías y Herramientas Utilizadas

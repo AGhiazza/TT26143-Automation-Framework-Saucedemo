@@ -31,4 +31,4 @@ def test_LO02_login_fallido_campos_vacios(driver):
     login_page.click_login()
     logger.info("Verificando mensaje de error")
     mensaje_error = login_page.mensaje_error()
-    assert "hola" in mensaje_error, "No se visualiza el mensaje de error correcto"
+    assert "Epic sadface" in mensaje_error, "No se visualiza el mensaje de error correcto"
