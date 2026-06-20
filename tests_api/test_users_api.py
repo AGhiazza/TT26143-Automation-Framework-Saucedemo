@@ -2,6 +2,7 @@ import requests
 import pytest
 from utils.api_utils import BASE_URL, HEADERS
 from utils.logger import logger
+from faker import Faker
 
 @pytest.mark.api
 def test_APIUS01_obtener_usuario():
@@ -15,10 +16,11 @@ def test_APIUS01_obtener_usuario():
 @pytest.mark.api
 def test_APIUS02_crear_usuario():
     logger.info("=== Iniciando test_APIUS02_crear_usuario ===")
+    fake = Faker()
+
     body = {
-        "name": "juancho",
-        "email": "aghiazzabna@gmail.com",
-        "password": "12345",
+    "name": fake.name(),
+    "job": fake.job(),
     }
 
     response = requests.post(BASE_URL+"/api/users", headers=HEADERS, json=body)
@@ -27,8 +29,9 @@ def test_APIUS02_crear_usuario():
 
     assert response.status_code == 201, "No se pudo crear el usuario."
     assert data["name"] == body["name"], "El nombre no se generó correctamente."
-    assert data["email"] == body["email"], "El email no se generó correctamente."
-    assert data["password"] == body["password"], "La contraseña no se generó correctamente."
+    assert data["job"] == body["job"], "El trabajo no se generó correctamente."
+    assert "id" in data, "No se generó el ID del usuario."
+    assert "createdAt" in data, "No se generó la fecha de creación."
 
 @pytest.mark.api
 def test_APIUS03_eliminar_usuario():
@@ -36,3 +39,5 @@ def test_APIUS03_eliminar_usuario():
     response = requests.delete(BASE_URL+"/api/users/2", headers=HEADERS)
 
     assert response.status_code == 204
+
+    
